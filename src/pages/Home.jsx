@@ -1,7 +1,6 @@
 import { useState } from "react";
-import SearchBar from "../components/Searchbar";
 import WeatherDisplay from "../components/WeatherDisplay";
-
+import SearchBar from "../components/SearchBar";
 
 function Home() {
     const [weatherData, setWeatherData] = useState(null);

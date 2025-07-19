@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 
-function SearchBar({ setWeatherData }) {
-  const [location, setLocation] = useState('Cebu');
+function SearchBar({ setWeatherData, setErrorMsg }) {
+  const [location, setLocation] = useState('');
 
   const handleSearch = async () => {
     const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
@@ -14,7 +14,14 @@ function SearchBar({ setWeatherData }) {
         console.log(response.data);
     }
     catch (error) {
-        console.error("Error fetching weather data:", error);
+        if (error.response && error.response.status === 400) {
+          setErrorMsg('Invalid location. Please try again.');
+        }
+
+        else {
+          setErrorMsg('An error occurred while fetching the weather data. Please try again later.');
+        }
+        setWeatherData(null);
     }
   }
 

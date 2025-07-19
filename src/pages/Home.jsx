@@ -4,14 +4,19 @@ import SearchBar from "../components/SearchBar";
 
 function Home() {
     const [weatherData, setWeatherData] = useState(null);
+    const [errorMsg, setErrorMsg] = useState('');
 
     return (
         <>
-            <SearchBar setWeatherData={setWeatherData}></SearchBar>
+            <SearchBar setWeatherData={setWeatherData} setErrorMsg={setErrorMsg}></SearchBar>
             {weatherData ? (
                 <WeatherDisplay data={weatherData} />
             ) : (
-                <p>Loading...</p>
+                errorMsg ? (
+                    <h2 className='error-message'>{errorMsg}</h2>
+                ) : (
+                <h1>Weather App</h1>
+                )
             )}
         </>
     )

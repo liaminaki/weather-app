@@ -1,17 +1,15 @@
-import axios from "axios";
 import { useState } from "react";
+import { fetchWeather } from "../api/weather";
 
 function SearchBar({ setWeatherData, setErrorMsg }) {
   const [location, setLocation] = useState('');
 
   const handleSearch = async () => {
-    const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
-    const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}&aqi=no`;
 
     try {
-        const response = await axios.get(url);
-        setWeatherData(response.data);
-        console.log(response.data);
+        const data = await fetchWeather(location);
+        setWeatherData(data);
+        console.log(data);
     }
     catch (error) {
         if (error.response && error.response.status === 400) {

@@ -8,7 +8,7 @@
   box-sizing: border-box;
 }
 
-p  {
+p {
   margin: 0;
 }
 
@@ -34,7 +34,9 @@ button {
   background-color: #646cff;
   color: white;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  transition:
+    background-color 0.3s,
+    transform 0.2s;
 }
 
 section {

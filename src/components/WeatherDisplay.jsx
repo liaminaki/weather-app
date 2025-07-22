@@ -1,4 +1,4 @@
-function WeatherDisplay({ data }) {
+function WeatherDisplay({ data, description }) {
   return (
     <>
       <section>
@@ -9,6 +9,9 @@ function WeatherDisplay({ data }) {
         <h1>{data.location.name}</h1>
         <p>{data.current.condition.text}</p>
         <p>{data.current.temp_c} °C</p>
+      </section>
+      <section>
+        <p>{description}</p>
       </section>
     </>
   );

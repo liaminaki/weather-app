@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { fetchWeather } from "../api/weather";
+import { fetchDescription } from "../api/gemini";
 
-function SearchBar({ setWeatherData, setErrorMsg }) {
+function SearchBar({ setWeatherData, setDescription, setErrorMsg }) {
   const [location, setLocation] = useState("");
 
   const handleSearch = async () => {
     try {
       const data = await fetchWeather(location);
+      const descriptionObject = await fetchDescription(location);
+      setDescription(descriptionObject.description);
       setWeatherData(data);
       console.log(data);
     } catch (error) {
